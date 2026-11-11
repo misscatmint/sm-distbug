@@ -12,6 +12,11 @@ void OnPluginStart_Clientprefs()
 	}
 }
 
+void OnClientConnected_Clientprefs(int client)
+{
+	settings[client] = 0;
+}
+
 void OnClientCookiesCached_Clientprefs(int client)
 {
 	char buffer[MAX_COOKIE_SIZE];

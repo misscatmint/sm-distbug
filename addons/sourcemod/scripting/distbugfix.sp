@@ -177,6 +177,14 @@ public void OnMapStart()
 	g_beamSprite = PrecacheModel("materials/sprites/laserbeam.vmt");
 }
 
+public void OnClientConnected(int client)
+{
+	PlayerData empty;
+	g_pd[client] = empty;
+	g_failstatPD[client] = empty;
+	OnClientConnected_Clientprefs(client);
+}
+
 public void OnClientPutInServer(int client)
 {
 	SDKHook(client, SDKHook_PostThinkPost, PlayerPostThink);
