@@ -243,6 +243,8 @@ public Action Command_Distbugversion(int client, int args)
 public Action Command_Distbug(int client, int args)
 {
 	ToggleSetting(client, SETTINGS_DISTBUG_ENABLED);
+	// Tracking pauses while distbug is off, so a jump spanning the toggle has gaps.
+	ResetJump(g_pd[client]);
 	CPrintToChat(client, "%s Distbug has been %s", CHAT_PREFIX,
 		IsSettingEnabled(client, SETTINGS_DISTBUG_ENABLED) ? "enabled." : "disabled.");
 	
