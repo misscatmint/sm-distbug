@@ -13,10 +13,10 @@
  * Trace ray filter that filters players from being traced.
  *
  * @param entity			Entity.
- * @param data				Data.
+ * @param contentsMask		Contents mask.
  * @return 					True on success, false otherwise.
  */
-stock bool GCTraceEntityFilterPlayer(int entity, any data)
+stock bool GCTraceEntityFilterPlayer(int entity, int contentsMask)
 {
 	return entity > MAXPLAYERS;
 }

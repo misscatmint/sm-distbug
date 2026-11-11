@@ -9,13 +9,13 @@
 #pragma semicolon 1
 
 #if defined DEBUG
-#define DEBUG_CHAT(%1) PrintToChat(%1);
-#define DEBUG_CHATALL(%1) PrintToChatAll(%1);
-#define DEBUG_CONSOLE(%1) PrintToConsole(%1);
+#define DEBUG_CHAT PrintToChat
+#define DEBUG_CHATALL PrintToChatAll
+#define DEBUG_CONSOLE PrintToConsole
 #else
-#define DEBUG_CHAT(%1)
-#define DEBUG_CHATALL(%1)
-#define DEBUG_CONSOLE(%1)
+stock void DEBUG_CHAT(any ...) {}
+stock void DEBUG_CHATALL(any ...) {}
+stock void DEBUG_CONSOLE(any ...) {}
 #endif
 
 #include <gamechaos>
@@ -749,7 +749,7 @@ void TrackJump(PlayerData pd, PlayerData failstatPD)
 				pd.strafeMaxEfficiency[strafe] = efficiency;
 			}
 			
-			DEBUG_CONSOLE(1, "%i\t%f\t%f\t%f\t%f\t%f", strafe, (yawdiff - perfectYawDiff), pd.sidemove, yawdiff, perfectYawDiff, speed)
+			DEBUG_CONSOLE(1, "%i\t%f\t%f\t%f\t%f\t%f", strafe, (yawdiff - perfectYawDiff), pd.sidemove, yawdiff, perfectYawDiff, speed);
 		}
 	}
 	
@@ -925,7 +925,7 @@ void OnPlayerJumped(int client, PlayerData pd, JumpType jumpType)
 		pd.jumpPos = pd.position;
 		pd.jumpAngles = pd.angles;
 		
-		DEBUG_CHAT(client, "jumppos z: %f", pd.jumpPos[2])
+		DEBUG_CHAT(client, "jumppos z: %f", pd.jumpPos[2]);
 		
 		pd.jumpPrespeed = GCGetVectorLength2D(pd.velocity);
 		
@@ -937,7 +937,7 @@ void OnPlayerJumped(int client, PlayerData pd, JumpType jumpType)
 		}
 		else
 		{
-			DEBUG_CHATALL("AAAAAAAAAAAAA")
+			DEBUG_CHATALL("AAAAAAAAAAAAA");
 		}
 	}
 	else
@@ -1078,7 +1078,7 @@ void OnPlayerLanded(int client, PlayerData pd, PlayerData failstatPD)
 	}
 	else
 	{
-		DEBUG_CHAT(client, "bad jump distance %f", pd.jumpDistance)
+		DEBUG_CHAT(client, "bad jump distance %f", pd.jumpDistance);
 	}
 	ResetJump(pd);
 }
@@ -1213,7 +1213,7 @@ void FinishTrackingJump(int client, PlayerData pd)
 		if (TR_DidHit())
 		{
 			TR_GetEndPosition(jumpEdge);
-			DEBUG_CHAT(1, "ladder front: %f %f %f", jumpEdge[0], jumpEdge[1], jumpEdge[2])
+			DEBUG_CHAT(1, "ladder front: %f %f %f", jumpEdge[0], jumpEdge[1], jumpEdge[2]);
 			
 			float jumpOrigin[3];
 			float landOrigin[3];
@@ -1232,7 +1232,7 @@ void FinishTrackingJump(int client, PlayerData pd)
 			
 			float landEdge[3];
 			bool land = GCTraceBlock(tempPos, landOrigin, landEdge);
-			DEBUG_CHAT(1, "tracing from %f %f %f to %f %f %f", tempPos[0], tempPos[1], tempPos[2], landOrigin[0], landOrigin[1], landOrigin[2])
+			DEBUG_CHAT(1, "tracing from %f %f %f to %f %f %f", tempPos[0], tempPos[1], tempPos[2], landOrigin[0], landOrigin[1], landOrigin[2]);
 			
 			if (land)
 			{
