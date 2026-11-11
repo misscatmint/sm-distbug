@@ -414,13 +414,13 @@ public void PlayerPostThink(int client)
 		
 		if (g_pd[client].framesOnGround == 1)
 		{
-			TrackJump(g_pd[client], g_failstatPD[client]);
+			TrackJump(client, g_pd[client], g_failstatPD[client]);
 			OnPlayerLanded(client, g_pd[client], g_failstatPD[client]);
 		}
 		
 		if (g_pd[client].trackingJump)
 		{
-			TrackJump(g_pd[client], g_failstatPD[client]);
+			TrackJump(client, g_pd[client], g_failstatPD[client]);
 		}
 	}
 	g_pd[client].tickCount++;
@@ -570,7 +570,7 @@ bool IsNewStrafe(PlayerData pd)
 				&& pd.jumpAirtime != 1;
 }
 
-void TrackJump(PlayerData pd, PlayerData failstatPD)
+void TrackJump(int client, PlayerData pd, PlayerData failstatPD)
 {
 #if defined(DEBUG)
 	SetHudTextParams(-1.0, 0.2, 0.02, 255, 255, 255, 255, 0, 0.0, 0.0, 0.0);
@@ -606,6 +606,10 @@ void TrackJump(PlayerData pd, PlayerData failstatPD)
 		// NOTE: 1.73205081 * sv_maxvelocity is the max velocity magnitude you can get.
 		if (moveLength > g_maxvelocity.FloatValue * 1.73205081 * frametime)
 		{
+			if (pd.jumpGotFailstats)
+			{
+				OnPlayerFailstat(client, failstatPD);
+			}
 			ResetJump(pd);
 			return;
 		}
