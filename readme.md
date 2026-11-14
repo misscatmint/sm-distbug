@@ -1,4 +1,20 @@
 
+**v3.0.0 Changelog**
+
+13.11.2026
+
+This release builds on GameChaos's v2.0.0 and includes no changes from other
+forks.
+
+- Builds with SourceMod 1.12.
+- A failed jump that ends in a teleport now prints its failstat.
+- Toggling distbug mid-jump no longer prints stats for a jump with gaps in its
+  tracking.
+- A player joining a slot no longer inherits the previous player's settings or
+  jump state.
+- Added a Makefile: `make` builds the plugin and `make dist` builds a release
+  zip.
+
 **v2.0.0 Changelog**
 
 26.10.2022

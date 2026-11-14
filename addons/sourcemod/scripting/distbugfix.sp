@@ -109,10 +109,10 @@ ConVar g_jumpRange[JumpType][2];
 public Plugin myinfo =
 {
 	name = "Distance Bug Fix",
-	author = "GameChaos",
+	author = "GameChaos, catmint",
 	description = "Fixes longjump distance bug",
 	version = DISTBUG_VERSION,
-	url = "https://bitbucket.org/GameChaos/distbug/src"
+	url = "https://github.com/misscatmint/sm-distbug"
 };
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
